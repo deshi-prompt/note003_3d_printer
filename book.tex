@@ -1,0 +1,162 @@
+\documentclass[a4paper,11pt,oneside,openany]{jsbook}
+%
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{bm}
+\usepackage{graphicx}	
+\usepackage{ascmac}
+\usepackage{makeidx}
+\usepackage{hyperref}
+\usepackage{layout}
+\usepackage{fancyhdr}
+\usepackage{caption}
+\usepackage{here}
+\usepackage{url}
+\usepackage{layout}
+
+%
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+%
+%図の前のコロンを削除%%%%%%%%
+\makeatletter
+\long\def\@makecaption#1#2{%
+\vskip\abovecaptionskip
+\iftdir\sbox\@tempboxa{#1\hskip1zw#2}%
+\else\sbox\@tempboxa{#1 #2}%
+\fi
+\ifdim \wd\@tempboxa >\hsize
+\iftdir #1\hskip1zw#2\relax\par
+\else #1 #2\relax\par\fi
+\else
+\global \@minipagefalse
+\hbox to\hsize{\hfil\box\@tempboxa\hfil}%
+\fi
+\vskip\belowcaptionskip}
+
+% 図を強制的に指示した位置に入れる
+\usepackage{here}
+\renewcommand{\figurename}{Fig.}
+
+%section書式設定%%%%%%%%
+\renewcommand{\section}{\@startsection{section}{1}{\z@}%
+   {0.5\Cvs \@plus0\Cvs \@minus 0.2\Cvs}% % section上部の空白量
+   {0\Cvs \@plus0\Cvs \@minus 0.2\Cvs}%                % section下部の空白量
+   {\reset@font\Large\bfseries}}         % フォント，フォントサイズを変更
+\renewcommand{\subsection}{\@startsection{subsection}{2}{\z@}%
+   {0.5\Cvs \@plus0\Cvs \@minus 0.2\Cvs}% 
+   {0\Cvs \@plus0\Cvs \@minus 0.2\Cvs}%
+   {\reset@font\large\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{\z@}%
+   {0.5\Cvs \@plus0\Cvs \@minus 0.2\Cvs}% 
+   {0\Cvs \@plus0\Cvs \@minus 0.2\Cvs}%
+   {\reset@font\normalsize\bfseries}}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\makeindex
+%レイアウト設定%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{fancy}
+\cfoot{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+%
+\setlength{\textwidth}{389pt}
+\setlength{\headwidth}{389pt}
+\setlength{\textheight}{35.5\baselineskip}
+\setlength{\footskip}{35pt}
+\addtolength{\textheight}{\topskip}
+\setlength{\voffset}{-0.65in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{{\Huge \textbf{3Dプリンタでロボット開発}}\\ {\small Ver. 2.0}}
+\author{でし・ぷろんぷと\\ \texttt{http://deshi-prompt.github.io/}}
+\date{\today}
+\begin{document}
+
+\parindent = 0pt % 字下げしない
+
+%------------------------------------------------------------------
+\thispagestyle{empty}
+
+\newpage　
+
+\frontmatter % 序文の開始
+\tableofcontents %目次作成
+\thispagestyle{empty} 
+%------------------------------------------------------------------
+\mainmatter % 本文の開始
+
+
+\setlength{\parskip}{1.5ex plus 0ex minus 0.2ex}
+
+\chapter{はじめに}
+\thispagestyle{fancy}
+\input{./output/01.tex}
+
+\chapter{3Dプリンタの解説・選定ポイント}
+\thispagestyle{fancy}
+\input{./output/02.tex}
+
+\chapter{3Dプリンタでロボット設計}
+\thispagestyle{fancy}
+\input{./output/03.tex}
+
+\chapter{3Dプリンタでロボット製作}
+\thispagestyle{fancy}
+\input{./output/04.tex}
+
+
+\begin{thebibliography}{20}
+\bibitem{ninjaflex}NINJAFLEX \\ \url{https://ninjatek.com/products/filaments/ninjaflex/}
+\bibitem{tough-pla}TOUGH PLA \\ \url{https://www.makerbot.com/filament/tough-pla/}
+\bibitem{kawasaki_public_HP}かわさきロボット競技大会 公式HP \\ \url{http://www.kawasaki-net.ne.jp/robo/}
+\bibitem{creo_elements}PTC Creo Elements/Direct Modeling　\\ \url{http://ja.ptc.com/product/creo/elements/direct-modeling}
+\bibitem{tamiya_380k}タミヤ ギアドモータ380K　\\ \url{http://www.tamiya.com/japan/robocon/robo_parts/g_motor/g_motor_zumen.htm}
+\bibitem{replicator2x}Makerbot Replicator 2X　\\ \url{http://makerbot.co.jp/contents/replicator2x.html}
+\bibitem{pat01}日本特許 :小玉秀男. 立体図形作成装置. 特開昭56-144478. 1981-11-10. 
+\bibitem{pat02}米国特許 : S. Scott Crump. Apparatus and method for creating three-dimensional objects. U. S. Patent 5121329 A. 1992-6-9. \\ \url{http://www.google.ca/patents/US5121329}
+\bibitem{pat03}米国特許 : William J. Swanson. High temperature modeling apparatus. U. S. Patent 6722872 B1. 2004-4-20.	\\ \url{https://www.google.com/patents/US6722872}
+
+\end{thebibliography}
+\thispagestyle{empty} 　
+%------------------------------------------------------------------
+%\appendix % 付録
+
+%------------------------------------------------------------------
+\backmatter % 後書きの開始
+\chapter{おわりに}
+\thispagestyle{empty} 
+
+1980年、日本の小玉氏が光硬化樹脂を用いた「立体図形作成装置」の特許\cite{pat01}を出願しました。
+これが3Dプリンタの元祖と言われています。
+残念ながら製品化には繋がりませんでしたが、この時から光造形に関する特許が世界各国で出願されるようになりました。
+そして1989年、米国Stratasys社が「Apparatus and method for creating three-dimensional objects」に関する特許\cite{pat02}を出願しました。
+熱溶解積層法（FDM）3Dプリンタの基本特許です。2009年にこの特許権が失効したことから、世界各国3Dプリンタが発売されるようになりました。
+
+私がこれを知って思ったのは、3Dプリンタは革新的な技術が産まれてできた製品ではないんだなぁ、ということです。
+今はメイカーが増えたことで続々と関連技術が産まれているのでしょうが、そもそもの3Dプリンタは新しい技術で作られているわけではありません。
+
+知られていないだけで、世の中にはまだまだ良い技術が眠っていそうです。
+モノづくりがしやすくなった時代ですし、世界中から情報かき集めたら何か楽しいことができるのかも……
+また何かネタを見つけたらこうして本にするのも面白いかもしれませんね。\\
+最後まで読んでいただきありがとうございました。
+
+\section*{発行}
+でし・ぷろんぷと　\\
+2016年12月29日 第1版 発行
+
+\section*{著者}
+kyo46
+
+\section*{Web} 
+http://deshi-prompt.github.io/
+
+\section*{Mail}
+ada.robo1@gmail.com             
+
+   
+
+\newpage　
+\pagestyle{empty}
+%\printindex
+%
+%
+\end{document}
